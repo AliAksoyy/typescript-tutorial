@@ -14,9 +14,10 @@ interface IEmployee {
 
 class Instructor implements IPerson, IEmployee {
   name:string;
-
-  constructor(name:string, public id:number, public salary:number, public depart:string){
+id:number;
+  constructor(name:string,  id:number, public salary:number, public depart:string){
     this.name=name
+    this.id=id
   }
 }
 
