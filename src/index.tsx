@@ -1,12 +1,20 @@
 export {};
 console.log("hello typescript");
 
-// let a<T ,string> = (b:T,c:string):void =>console.log(b,c) ;
-
-// a(1,"2")
-
-function ali<T>(a: T, b: string): void {
-  console.log(a, b);
+interface Product {
+  name: string;
+  price: number;
+  brand?: string;
 }
 
-ali("true","2")
+function update<T extends object, K extends keyof T>(
+  obj: T,
+  key: K,
+  value: T[K]
+) {
+  return { ...obj, [key]: value };
+}
+
+let pro: Product = { name: "ali", price: 2 };
+
+console.log(update(pro, "price", 2));
