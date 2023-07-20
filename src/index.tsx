@@ -1,31 +1,12 @@
-export {}
-console.log("hello typescript")
+export {};
+console.log("hello typescript");
 
+// let a<T ,string> = (b:T,c:string):void =>console.log(b,c) ;
 
-interface IPerson {
-  name:string
+// a(1,"2")
+
+function ali<T>(a: T, b: string): void {
+  console.log(a, b);
 }
 
-interface IEmployee {
-  id:number,
-  salary:number,
-  depart:string
-}
-
-class Instructor implements IPerson, IEmployee {
-  name:string;
-id:number;
-  constructor(name:string,  id:number, public salary:number, public depart:string){
-    this.name=name
-    this.id=id
-  }
-}
-
-let ali = new Instructor("ali", 1,15,"front")
-console.log(ali)
-
-function calis(value:IEmployee):void{
-  console.log(value.id + " " + value.salary + " " + value.depart )
-}
-
-calis({id:3, salary:3,depart:"2"})
+ali("true","2")
