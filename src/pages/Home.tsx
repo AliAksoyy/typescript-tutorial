@@ -18,7 +18,6 @@ const Home = () => {
   };
 
   const addTodo: AddFn = async (text) => {
-    console.log("a",text)
     const newTodo = {
       task: text,
       isDone: false,
