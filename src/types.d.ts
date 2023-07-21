@@ -5,3 +5,5 @@
   }
 
    type AddFn = (text: string) => void;
+
+type ToogleFn = (task:ITodoType)=> void

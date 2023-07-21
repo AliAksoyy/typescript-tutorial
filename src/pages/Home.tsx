@@ -31,13 +31,25 @@ const Home = () => {
     }
   };
 
+  const toggleTodo: ToogleFn = async (todo) => {
+    try {
+      await axios.put(`${baseUrl}/${todo.id}`, {
+        ...todo,
+        isDone: !todo.isDone,
+      });
+      getTodos();
+    } catch (err) {
+      console.log(err);
+    }
+  };
+
   useEffect(() => {
     getTodos();
   }, []);
   return (
     <div className="main">
       <InputForm addTodo={addTodo} />
-      <TodoList todos={todos} />
+      <TodoList todos={todos} toggleTodo={toggleTodo} />
     </div>
   );
 };

@@ -2,9 +2,9 @@ import React from "react";
 
 interface IListItem {
   todo: ITodoType;
+  toggleTodo: ToogleFn;
 }
-const TodoListItem: React.FC<IListItem> = ({ todo }) => {
-  console.log(todo);
+const TodoListItem: React.FC<IListItem> = ({ todo, toggleTodo }) => {
   return (
     <li>
       {todo?.isDone ? (
