@@ -1,17 +1,29 @@
 import React from "react";
 
 interface IListItem {
-  todo:ITodoType
+  todo: ITodoType;
+  toggleTodo: ToogleFn;
+  deleteTodo: DelFn;
 }
-const TodoListItem :React.FC<IListItem> = ({todo}) => {
+const TodoListItem: React.FC<IListItem> = ({
+  todo,
+  toggleTodo,
+  deleteTodo,
+}) => {
   return (
     <li>
-      <p className="checked">Todo </p>
-      <p> Todo </p>
-      <span className="task-icons">✖️</span>
+      {todo?.isDone ? (
+        <p onClick={() => toggleTodo(todo)} className="checked">
+          {todo.task}{" "}
+        </p>
+      ) : (
+        <p onClick={() => toggleTodo(todo)}> {todo.task} </p>
+      )}
+      <span onClick={() => deleteTodo(todo.id)} className="task-icons">
+        ✖️
+      </span>
     </li>
   );
 };
-
 
 export default TodoListItem;
