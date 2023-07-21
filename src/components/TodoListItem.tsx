@@ -1,5 +1,9 @@
 import React from "react";
-const TodoListItem = () => {
+
+interface IListItem {
+  todo:ITodoType
+}
+const TodoListItem :React.FC<IListItem> = ({todo}) => {
   return (
     <li>
       <p className="checked">Todo </p>
