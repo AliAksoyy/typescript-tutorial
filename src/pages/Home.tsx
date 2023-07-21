@@ -17,12 +17,27 @@ const Home = () => {
     }
   };
 
+  const addTodo: AddFn = async (text) => {
+    console.log("a",text)
+    const newTodo = {
+      task: text,
+      isDone: false,
+    };
+
+    try {
+      await axios.post(baseUrl, newTodo);
+      getTodos();
+    } catch (err) {
+      console.log(err);
+    }
+  };
+
   useEffect(() => {
     getTodos();
   }, []);
   return (
     <div className="main">
-      <InputForm />
+      <InputForm addTodo={addTodo} />
       <TodoList todos={todos} />
     </div>
   );

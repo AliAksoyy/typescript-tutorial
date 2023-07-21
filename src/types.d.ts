@@ -3,3 +3,5 @@
     task: string;
     isDone: boolean;
   }
+
+   type AddFn = (text: string) => void;
