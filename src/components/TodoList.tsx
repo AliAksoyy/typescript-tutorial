@@ -1,10 +1,14 @@
 import React from "react";
 import TodoListItem from "./TodoListItem";
 
-const TodoList = () => {
+interface ITodoList {
+  todos: ITodoType[];
+}
+
+const TodoList: React.FC<ITodoList> = ({ todos }) => {
   return (
     <ul>
-        <TodoListItem />
+      <TodoListItem />
     </ul>
   );
 };
