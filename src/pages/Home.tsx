@@ -43,13 +43,22 @@ const Home = () => {
     }
   };
 
+  const deleteTodo: DelFn = async (id) => {
+    try {
+      await axios.delete(`${baseUrl}/${id}`);
+      getTodos();
+    } catch (err) {
+      console.log(err);
+    }
+  };
+
   useEffect(() => {
     getTodos();
   }, []);
   return (
     <div className="main">
       <InputForm addTodo={addTodo} />
-      <TodoList todos={todos} toggleTodo={toggleTodo} />
+      <TodoList todos={todos} toggleTodo={toggleTodo} deleteTodo={deleteTodo} />
     </div>
   );
 };
