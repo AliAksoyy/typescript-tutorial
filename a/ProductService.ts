@@ -21,15 +21,20 @@ export class ProductService implements IProductService {
       product.id = this.generateId();
       this.products.push(product);
     } else {
-      let index = this.products.indexOf(product);
-      this.products.splice(index, 1,product);
+      let index;
+      for (let i = 0; this.products.length > i; i++) {
+        if (this.products[i].id == product.id) {
+          index = i;
+        }
+      }
+      this.products.splice(index, 1, product);
     }
   }
   deleteProduct(product: Product): void {
-      let index = this.products.indexOf(product);
-   if(index >0) {
-    this.products.splice(index, 1);
-   }
+    let index = this.products.indexOf(product);
+    if (index > 0) {
+      this.products.splice(index, 1);
+    }
   }
 
   private generateId(): number {
