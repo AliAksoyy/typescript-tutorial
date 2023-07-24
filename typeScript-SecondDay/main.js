@@ -1,13 +1,16 @@
-var Person = /** @class */ (function () {
-    function Person(a, b) {
-        this.firstName = a;
-        this.lastName = b;
+var Ali = /** @class */ (function () {
+    function Ali(first, last, id, department) {
+        this.first = first;
+        this.last = last;
+        this.id = id;
+        this.department = department;
+        this.salary = 444;
     }
-    Person.prototype.getFullName = function (a) {
-        return this.firstName + " " + this.lastName + " " + a.join(" ");
-    };
-    return Person;
+    return Ali;
 }());
-var a = new Person("s", "2");
-console.log(a.getFullName(["1", "2"]));
+var a = new Ali("a", "2", 3, "3");
 console.log(a);
+function beyda(calisan) {
+    console.log(calisan.department);
+}
+beyda({ id: 2, department: "3", salary: 3 });

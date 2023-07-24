@@ -1,23 +1,31 @@
-interface IPerson {
-  firstName: string;
-  lastName: string;
-  getFullName(a: string[]): string;
+interface Person {
+  first: string;
+  last: string;
 }
 
-class Person implements IPerson {
-  firstName: string;
-  lastName: string;
-
-  constructor(a: string, b: string) {
-    this.firstName = a;
-    this.lastName = b;
-  }
-  getFullName(a: Array<string>): string {
-    return this.firstName + " " + this.lastName + " " + a.join(" ");
-  }
+interface Employee {
+  id: number;
+  department: string;
+  salary: number;
 }
 
-let a = new Person("s", "2");
+class Ali implements Person, Employee {
+  salary: number = 444;
+  constructor(
+    public first: string,
+    public last: string,
+    public id: number,
+    public department: string
+  ) {}
+}
 
-console.log(a.getFullName(["1","2"]));
+let a = new Ali("a", "2", 3, "3");
 console.log(a);
+
+
+function beyda(calisan:Employee):void {
+console.log(calisan.department);
+}
+
+beyda({id: 2, department: "3",salary:3})
+
