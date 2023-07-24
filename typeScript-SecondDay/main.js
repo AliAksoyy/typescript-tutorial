@@ -1,16 +1,33 @@
-var Ali = /** @class */ (function () {
-    function Ali(first, last, id, department) {
-        this.first = first;
-        this.last = last;
-        this.id = id;
-        this.department = department;
-        this.salary = 444;
+var __extends = (this && this.__extends) || (function () {
+    var extendStatics = function (d, b) {
+        extendStatics = Object.setPrototypeOf ||
+            ({ __proto__: [] } instanceof Array && function (d, b) { d.__proto__ = b; }) ||
+            function (d, b) { for (var p in b) if (Object.prototype.hasOwnProperty.call(b, p)) d[p] = b[p]; };
+        return extendStatics(d, b);
+    };
+    return function (d, b) {
+        if (typeof b !== "function" && b !== null)
+            throw new TypeError("Class extends value " + String(b) + " is not a constructor or null");
+        extendStatics(d, b);
+        function __() { this.constructor = d; }
+        d.prototype = b === null ? Object.create(b) : (__.prototype = b.prototype, new __());
+    };
+})();
+var Employee = /** @class */ (function () {
+    function Employee(a, b) {
+        this.empName = a;
+        this.empCode = b;
     }
-    return Ali;
+    return Employee;
 }());
-var a = new Ali("a", "2", 3, "3");
+var AA = /** @class */ (function (_super) {
+    __extends(AA, _super);
+    function AA(a, b, c) {
+        var _this = _super.call(this, a, b) || this;
+        _this.department = c;
+        return _this;
+    }
+    return AA;
+}(Employee));
+var a = new AA("2", 2, "2");
 console.log(a);
-function beyda(calisan) {
-    console.log(calisan.department);
-}
-beyda({ id: 2, department: "3", salary: 3 });
