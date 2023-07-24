@@ -1,4 +1,21 @@
-let a = 50;
 
-if(a>10)
-a+10
+interface IPerson {
+  name: string;
+  id: number;
+}
+
+class Ali implements IPerson {
+  name: string;
+  id: number;
+
+  constructor(name: string, id: number) {
+    this.name = name;
+    this.id = id;
+  }
+  getAli() {
+    console.log(`${this.name} ${this.id}`);
+  }
+}
+
+let a = new Ali("s", 3);
+a.getAli();
