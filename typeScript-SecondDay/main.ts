@@ -1,25 +1,23 @@
-interface Color {
-  color: { r: number; g: number; b: number };
+interface IPerson {
+  firstName: string;
+  lastName: string;
+  getFullName(a: string[]): string;
 }
 
-interface Shape {
-  area: number;
-}
+class Person implements IPerson {
+  firstName: string;
+  lastName: string;
 
-class Square implements Color, Shape {
-  color: { r: number; g: number; b: number };
-  area: number;
-
-  constructor(c: { r: number; g: number; b: number }, a: number) {
-    this.color = c;
-    this.area = a;
+  constructor(a: string, b: string) {
+    this.firstName = a;
+    this.lastName = b;
   }
-
-  ali(): void {
-    console.log("object");
+  getFullName(a: Array<string>): string {
+    return this.firstName + " " + this.lastName + " " + a.join(" ");
   }
 }
 
-let a = new Square({ r: 0, g: 0, b: 0 }, 2);
+let a = new Person("s", "2");
 
+console.log(a.getFullName(["1","2"]));
 console.log(a);

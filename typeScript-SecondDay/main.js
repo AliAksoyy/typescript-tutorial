@@ -1,12 +1,13 @@
-var Square = /** @class */ (function () {
-    function Square(c, a) {
-        this.color = c;
-        this.area = a;
+var Person = /** @class */ (function () {
+    function Person(a, b) {
+        this.firstName = a;
+        this.lastName = b;
     }
-    Square.prototype.ali = function () {
-        console.log("object");
+    Person.prototype.getFullName = function (a) {
+        return this.firstName + " " + this.lastName + " " + a.join(" ");
     };
-    return Square;
+    return Person;
 }());
-var a = new Square({ r: 0, g: 0, b: 0 }, 2);
+var a = new Person("s", "2");
+console.log(a.getFullName(["1", "2"]));
 console.log(a);
