@@ -1,5 +1,17 @@
-const ali = <T>(items: T[]): T[] => {
-  return new Array().concat(items);
-};
+interface AA {
+  key: string;
+  value: number;
+}
 
-let a =ali([1,2,"34"])
+class BB implements AA {
+  constructor(public key: string, public value: number) {}
+}
+let a = new BB("2", 1);
+console.log(a);
+
+class CC<T, K> {
+  constructor(public aaa: T, public bbb: K) {}
+}
+
+let h = new CC(3, 3);
+console.log(h)
