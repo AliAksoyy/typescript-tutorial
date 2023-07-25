@@ -308,6 +308,28 @@
 
 // **Generic Examples *************************************9**********************************
 
+interface ISetState<T> {
+  (newStore: T): T;
+}
 
+const useState = <T>(initStore: T): [T, ISetState<T>] => {
+  let store: T = initStore;
+
+  function setState(newStore: T): T {
+    store = newStore;
+
+    return store;
+  }
+
+  return [store, setState];
+};
+
+const [state, setState] = useState<{ email: string; password: string }>({
+  email: "",
+  password: "",
+});
+
+console.log(state);
+console.log(setState({ email: "emre", password: "emre" }));
 
 
