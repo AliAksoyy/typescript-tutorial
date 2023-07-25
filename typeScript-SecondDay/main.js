@@ -129,3 +129,57 @@
 //   return products[myIndex];
 // };
 // **Generic Examples *************************************6**********************************
+// const last = <T>(arr: T[]): T => {
+//   return arr[arr.length - 1];
+// };
+// let l = last([1, 2, 3]);
+// console.log(l); //number
+// let l2 = last(["2", "3"]);
+// console.log(l2); // string
+// //
+// const makeArr = <T, Y>(arr1: T, arr2: Y): [T, Y] => {
+//   return [arr1, arr2];
+// };
+// let a = makeArr("2", 4);
+// let a1 = makeArr<string | null, number>("a", 5);
+// //
+// const makeFullName = <T extends { firstName: string; lastName: string }>(
+//   obj: T
+// ) => {
+//   return { ...obj, fullName: obj.firstName + " " + obj.lastName };
+// };
+// let v4 = makeFullName({ firstName: "ali", lastName: "akosy" });
+// console.log(v4);
+// interface Tab<T> {
+//   id: string;
+//   position: number;
+//   data: T;
+// }
+// type NumberTab = Tab<number>;
+// type StringTab = Tab<string>;
+//
+// **Generic Examples *************************************7**********************************
+// type MyGenericType<TData> = {
+//   data: TData;
+// };
+// type Example1 = MyGenericType<{ firstName: string }>;
+// type Example2 = MyGenericType<string>;
+// //
+// const makeFetch = <TData>(url: string): Promise<TData> => {
+//   return fetch(url).then((res) => res.json());
+// };
+// makeFetch<{ firstName: string; lastName: string }>(
+//   "https://randomuser.me/api/"
+// ).then((res) => console.log(res));
+//
+// const addIdToObject = <T>(obj: T): T & { id: string } => {
+//   return {
+//     ...obj,
+//     id: "123",
+//   };
+// };
+// const result = addIdToObject<{ firstName: string; lastName: string }>({
+//   firstName: "ali",
+//   lastName: "aksoy",
+// });
+// console.log(result)
