@@ -147,3 +147,26 @@
 
 // **Generic Examples *************************************5**********************************
 
+// function loggingIdentify<Type>(arg: Array<Type>): Type[] {
+//   console.log(arg.length);
+//   return arg;
+// }
+
+// interface Bootle {
+//   brand: string;
+//   type: number;
+// }
+
+// function getSearchProducts<T>(products: T[]): T {
+//   //do some database operations
+//   const myIndex = 3;
+//   return products[myIndex];
+// }
+
+// const getMoreSearchProducts = <T>(products: Array<T>): T => {
+//   const myIndex = 4;
+//   return products[myIndex];
+// };
+
+// **Generic Examples *************************************6**********************************
+
