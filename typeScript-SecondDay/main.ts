@@ -278,38 +278,33 @@
 
 // **Generic Examples *************************************8**********************************
 
-interface Database {
-  conn: string;
-  username: string;
-  password: number;
-}
-function getProperty<Type, Key extends Database>(
-  valOne: Type,
-  valTwo: Key
-): object {
-  return {
-    valOne,
-    valTwo,
-  };
-}
+// interface Database {
+//   conn: string;
+//   username: string;
+//   password: number;
+// }
+// function getProperty<Type, Key extends Database>(
+//   valOne: Type,
+//   valTwo: Key
+// ): object {
+//   return {
+//     valOne,
+//     valTwo,
+//   };
+// }
 
-getProperty({ a: 2 }, { conn: "localhost", username: "s", password: 2 });
+// getProperty({ a: 2 }, { conn: "localhost", username: "s", password: 2 });
 
-interface Quiz {
-  name: string;
-  type: string;
-}
+// interface Quiz {
+//   name: string;
+//   type: string;
+// }
 
-interface Course {
-  name: string;
-  author: string;
-  subject: string;
-}
+// interface Course {
+//   name: string;
+//   author: string;
+//   subject: string;
+// }
 
-class Sellable<T> {
-  public cart: T[] = [];
-  addToCart(product: T) {
-    this.cart.push(product);
-  }
-  
-}
+// **Generic Examples *************************************9**********************************
+
