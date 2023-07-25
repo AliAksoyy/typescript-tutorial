@@ -113,5 +113,37 @@
 //   console.log(job);
 // });
 
+// ???? arrow ile yazılımı
+// const ali = <J>(job: J): Ali<typeof job> => ({
+//   job,
+//   state: "b",
+//   onCompleted: (cb: (job: J) => void) => cb(job),
+// });
 
 // **Generic Examples *************************************4**********************************
+
+// type Dropdownoption = {
+//   value: string;
+// };
+
+// type DropdownProps<T extends ReadonlyArray<Dropdownoption>> = {
+//   options: T;
+//   onSelect: (arg: T[number]) => void;
+// };
+
+// declare function DropDown<T extends ReadonlyArray<Dropdownoption>>(
+//   props: DropdownProps<T>
+// ): void;
+
+// DropDown({
+//   options: [
+//     { value: "gadget" as const },
+//     { value: "widgets" as const },
+//   ] as const,
+//   onSelect: (arg) => {
+//     console.log(arg.value);
+//   },
+// });
+
+// **Generic Examples *************************************5**********************************
+
