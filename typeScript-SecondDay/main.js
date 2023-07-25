@@ -183,3 +183,22 @@
 //   lastName: "aksoy",
 // });
 // console.log(result)
+// const getValue = <TObj>(obj: TObj, key: keyof TObj): TObj[keyof TObj] => {
+//   if (key == "bad") {
+//     throw Error("Don't accesss the bad key");
+//   }
+//   return obj[key];
+// };
+// const result = getValue({ a: 1, b: "3", c: false }, "b");
+// console.log(result);
+// const getValue1 = <TObj, TKey extends keyof TObj>(
+//   obj: TObj,
+//   key: TKey
+// ): TObj[TKey] => {
+//   if (key == "bad") {
+//     throw Error("Don't accesss the bad key");
+//   }
+//   return obj[key];
+// };
+// const result1 = getValue({ a: 1, b: "3", c: false }, "b");
+// console.log(result1);
