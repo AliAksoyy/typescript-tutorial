@@ -71,44 +71,47 @@
 //   const y = await p2;
 // })();
 
-type Job = {
-  name: string;
-  start: () => void;
-  state: "inComplete" | "success" | "failure";
-};
+// type Job = {
+//   name: string;
+//   start: () => void;
+//   state: "inComplete" | "success" | "failure";
+// };
 
-type JobRun<T extends Job> = {
-  job: T;
-  state: "queued" | "running" | "completed";
-  onComplete: (cb: (job: T) => void) => void;
-};
+// type JobRun<T extends Job> = {
+//   job: T;
+//   state: "queued" | "running" | "completed";
+//   onComplete: (cb: (job: T) => void) => void;
+// };
 
-type SendEmailJob = Job & {
-  recipentEmail: string;
-  subject: string;
-};
+// type SendEmailJob = Job & {
+//   recipentEmail: string;
+//   subject: string;
+// };
 
-function enqueueJob<T extends Job>(job: T): JobRun<typeof job> {
-  job.name;
-  return {
-    job,
-    state: "queued",
-    onComplete: (cb: (job: T) => void) => cb(job),
-  };
-}
+// function enqueueJob<T extends Job>(job: T): JobRun<typeof job> {
+//   job.name;
+//   return {
+//     job,
+//     state: "queued",
+//     onComplete: (cb: (job: T) => void) => cb(job),
+//   };
+// }
 
-const j: SendEmailJob = {
-  recipentEmail: "alice@gmail",
-  subject: "hii",
-  name: "send-email",
-  start: () => null,
-  state: "inComplete",
-};
+// const j: SendEmailJob = {
+//   recipentEmail: "alice@gmail",
+//   subject: "hii",
+//   name: "send-email",
+//   start: () => null,
+//   state: "inComplete",
+// };
 
-const run = enqueueJob(j);
+// const run = enqueueJob(j);
 
-console.log(run);
+// console.log(run);
 
-run.onComplete((job) => {
-  console.log(job);
-});
+// run.onComplete((job) => {
+//   console.log(job);
+// });
+
+
+// **Generic Examples *************************************4**********************************
