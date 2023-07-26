@@ -27,7 +27,7 @@ hero = getHero(); // hero type any
 
 // function
 
-function addTwo(num: number) {
+function addTwo(num: number): number {
   //   num.toUpperCase();
 
   return num + 2;
@@ -42,6 +42,36 @@ getUpper("ali");
 function signUpUser(name: string, email: string, isPaid: boolean) {}
 
 signUpUser("ali", "ali@gmail.com", true);
-let loginUser = (name: string, email: string, isPaid: boolean =false) => {};
+let loginUser = (name: string, email: string, isPaid: boolean = false) => {};
 
 loginUser("ali", "ali@gmail.com");
+
+function getValue(myVal: number): boolean | string {
+  if (myVal > 5) {
+    return true;
+  } else {
+    return "OK";
+  }
+}
+
+let result = getValue(6);
+
+const getHello = (s: string): string => {
+  return s;
+};
+
+const heros = ["thor", "spiderman", "ironman"]; // string[]
+// const heros = [1, 2, 3]; // Array<number>
+
+heros.map((hero): string => {
+  return `hero is ${hero}`;
+});
+
+function consoleError(errmsg: string): void {
+  console.log(errmsg);
+  //   return 3 because this func void
+}
+
+function handleError(msg: string):never {
+  throw new Error(msg);
+}
