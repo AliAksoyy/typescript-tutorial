@@ -25,3 +25,23 @@ function getHero() {
 }
 hero = getHero(); // hero type any
 
+// function
+
+function addTwo(num: number) {
+  //   num.toUpperCase();
+
+  return num + 2;
+}
+
+console.log("aa", addTwo(2));
+
+let getUpper = (val: string) => val.toUpperCase();
+
+getUpper("ali");
+
+function signUpUser(name: string, email: string, isPaid: boolean) {}
+
+signUpUser("ali", "ali@gmail.com", true);
+let loginUser = (name: string, email: string, isPaid: boolean =false) => {};
+
+loginUser("ali", "ali@gmail.com");
