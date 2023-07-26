@@ -40,3 +40,17 @@ let getId = (id: number | string) => {
     id; // ?? number methodlatını görürüz
   }
 };
+
+const data: number[] = [1, 2, 3];
+const data1: Array<string> = ["1", "2"];
+const data2: Array<string | number> = ["1", "2", 1, 2];
+const data3: (number | string | boolean)[] = [1, 2, "2", false];
+const data4: any[] = [1, 2, "2", false, { a: 3 }];
+
+let pi: 3.14 = 3.14;
+// pi = 3.15; //?? atandığı değeriler uyuşmuyor
+
+let seatAllotment: "aisle" | "middle" | "window";
+
+seatAllotment = "aisle";
+// seatAllotment= "ali" //?? Type '"ali"' is not assignable to type '"aisle" | "middle" | "window"'.
