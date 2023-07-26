@@ -54,3 +54,16 @@ let seatAllotment: "aisle" | "middle" | "window";
 
 seatAllotment = "aisle";
 // seatAllotment= "ali" //?? Type '"ali"' is not assignable to type '"aisle" | "middle" | "window"'.
+
+const user: (string | number)[] = ["ali", "aksoy", 3];
+const user1: [string, number, boolean] = ["ali", 3, true];
+
+let rgb: [number, number, number] = [255, 255, 255];
+
+type User1 = [number, string];
+
+const newUser: User1 = [2, "ali"];
+
+newUser[1] = "veli";
+// newUser[0] = "beyda"; // ??? ype 'string' is not assignable to type 'number'.
+newUser.push("true");
