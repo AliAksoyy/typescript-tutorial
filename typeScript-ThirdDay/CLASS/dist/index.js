@@ -2,6 +2,7 @@
 class User {
     constructor(email, name) {
         this._courseCount = 1;
+        this._course = 1;
         this.city = "kirikkale";
         this.email = email;
         this.name = name;
@@ -28,7 +29,22 @@ console.log(ali);
 // ali._courseCount //?? Property '_courseCount' is private and only accessible within class 'User'
 // ali.deleteToken() // ?? Property 'deleteToken' is private and only accessible within class 'User'.ts(2341)
 console.log(ali.getAppleEmail);
-//?? buda kısa yol
+// *** SUBCLASS
+class SubUser extends User {
+    constructor(email, name) {
+        super(email, name);
+        this.email = email;
+        this.name = name;
+        this.isFamily = true;
+    }
+    changeCourseCount() {
+        // this._courseCount=4 // ?? Property '_courseCount' is private and only accessible within class 'User'.
+        this._course = 2;
+    }
+}
+let ali2 = new SubUser("aa@", "aa");
+// ali2._course=5 //?? Property '_course' is protected and only accessible within class 'User' and its subclasses.
+//** buda kısa yol
 class User1 {
     constructor(email, name) {
         this.email = email;

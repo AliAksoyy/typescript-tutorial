@@ -1,5 +1,6 @@
 class User {
-  private _courseCount = 1;
+  private _courseCount: number = 1;
+  protected _course: number = 1;
   public email: string;
   public name: string;
   readonly city: string = "kirikkale";
@@ -37,7 +38,31 @@ console.log(ali);
 
 console.log(ali.getAppleEmail);
 
-//?? buda kısa yol
+
+
+// *** SUBCLASS
+
+
+class SubUser extends User {
+  isFamily: boolean = true;
+
+  constructor(public email: string, public name: string) {
+    super(email, name);
+  }
+  changeCourseCount() {
+    // this._courseCount=4 // ?? Property '_courseCount' is private and only accessible within class 'User'.
+    this._course = 2;
+  }
+}
+
+let ali2 = new SubUser("aa@","aa");
+
+// ali2._course=5 //?? Property '_course' is protected and only accessible within class 'User' and its subclasses.
+
+
+//** buda kısa yol
+
+
 class User1 {
   readonly city: string = "kirikkale";
   constructor(public email: string, public name: string) {}
