@@ -1,7 +1,7 @@
 class User {
   private _courseCount = 1;
   public email: string;
-  private name: string;
+  public name: string;
   readonly city: string = "kirikkale";
 
   constructor(email: string, name: string) {
@@ -30,13 +30,12 @@ class User {
 
 const ali = new User("ali@gmail.com", "ali");
 // ali.city = "2"; //?? Cannot assign to 'city' because it is a read-only property
-// console.log(ali);
-// ali.name //?? Property 'name' is private and only accessible within class 'User'
+console.log(ali);
+// ali._courseCount //?? Property '_courseCount' is private and only accessible within class 'User'
 
 // ali.deleteToken() // ?? Property 'deleteToken' is private and only accessible within class 'User'.ts(2341)
 
-console.log(ali.courseCount);
-
+console.log(ali.getAppleEmail);
 
 //?? buda kısa yol
 class User1 {
