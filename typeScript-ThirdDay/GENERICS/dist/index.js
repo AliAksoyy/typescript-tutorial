@@ -24,3 +24,27 @@ const getModeSearchProducts = (products) => {
     const myIndex = 2;
     return products[myIndex];
 };
+function anotherFunction(valOne, valTwo, valThree) {
+    return {
+        valOne,
+        valTwo,
+        valThree,
+    };
+}
+console.log(anotherFunction({ name: "ali", id: 2 }, 3, "id"));
+class Sellable {
+    constructor() {
+        this.cart = [];
+    }
+    addToCart(product) {
+        this.cart.push(product);
+    }
+}
+function detectType(val) {
+    if (typeof val === "number") {
+        return val + 2;
+    }
+    else {
+        return val += "ali";
+    }
+}
