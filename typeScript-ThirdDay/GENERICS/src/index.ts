@@ -147,13 +147,15 @@ interface Rectangle {
   width: number;
 }
 
-type Shape = Circle | Square;
+type Shape = Circle | Square | Rectangle;
 
 function getTrueShape(shape: Shape) {
   if (shape.kind === "circle") {
     return Math.PI * shape.radius;
+  } else if (shape.kind === "square") return shape.side * shape.side;
+  else {
+    return shape.length * shape.width;
   }
-  return shape.side * shape.side;
 }
 
 function getArea(shape: Shape) {
@@ -162,5 +164,10 @@ function getArea(shape: Shape) {
       return Math.PI * shape.radius;
     case "square":
       return shape.side * shape.side;
+    case "rectangle":
+      return shape.length * shape.width;
+    default:
+      const _defaultForShape: never = shape;
+      return _defaultForShape;
   }
 }

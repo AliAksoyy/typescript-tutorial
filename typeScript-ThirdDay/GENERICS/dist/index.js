@@ -94,7 +94,11 @@ function getTrueShape(shape) {
     if (shape.kind === "circle") {
         return Math.PI * shape.radius;
     }
-    return shape.side * shape.side;
+    else if (shape.kind === "square")
+        return shape.side * shape.side;
+    else {
+        return shape.length * shape.width;
+    }
 }
 function getArea(shape) {
     switch (shape.kind) {
@@ -102,5 +106,10 @@ function getArea(shape) {
             return Math.PI * shape.radius;
         case "square":
             return shape.side * shape.side;
+        case "rectangle":
+            return shape.length * shape.width;
+        default:
+            const _defaultForShape = shape;
+            return _defaultForShape;
     }
 }
