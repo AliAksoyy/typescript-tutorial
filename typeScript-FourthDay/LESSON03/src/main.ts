@@ -27,4 +27,30 @@ myTuple.push("asd");
 
 let myObj: object;
 myObj = [];
-console.log(typeof myObj)
+console.log(typeof myObj);
+myObj = bands;
+myObj = {};
+
+const exampleObj = {
+  prop1: "ali",
+  prop2: true,
+};
+
+exampleObj.prop2 = false;
+
+let a: Array<object> = [{ a: 3 }, { v: false }];
+
+type Guitarist = {
+  name: string;
+  active: boolean;
+  albums: (string | number)[];
+  cb: (type: string) => void;
+};
+
+let evh: Guitarist = {
+  name: "ali",
+  active: false,
+  albums: [12, "ali"],
+  cb: (type) => console.log(`${type}`),
+};
+evh.cb("a");

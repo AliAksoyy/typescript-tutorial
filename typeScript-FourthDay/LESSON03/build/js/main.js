@@ -16,3 +16,18 @@ myTuple.push("asd");
 let myObj;
 myObj = [];
 console.log(typeof myObj);
+myObj = bands;
+myObj = {};
+const exampleObj = {
+    prop1: "ali",
+    prop2: true,
+};
+exampleObj.prop2 = false;
+let a = [{ a: 3 }, { v: false }];
+let evh = {
+    name: "ali",
+    active: false,
+    albums: [12, "ali"],
+    cb: (type) => console.log(`${type}`),
+};
+evh.cb("a");
