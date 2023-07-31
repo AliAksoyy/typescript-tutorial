@@ -56,25 +56,46 @@
 // const Sara = new WebDev("Mac","Sarah","Lofi",25);
 // console.log(Sara)
 
-interface Musician {
-  name: string;
-  instrument: string;
-  play(action: string): string;
-}
+// interface Musician {
+//   name: string;
+//   instrument: string;
+//   play(action: string): string;
+// }
 
-class Guitarist implements Musician {
-  name: string;
-  instrument: string;
+// class Guitarist implements Musician {
+//   name: string;
+//   instrument: string;
 
-  constructor(name: string, instrument: string) {
+//   constructor(name: string, instrument: string) {
+//     this.name = name;
+//     this.instrument = instrument;
+//   }
+
+//   play(action: string): string {
+//     return `${this.name} ${action}`;
+//   }
+// }
+
+// let Page = new Guitarist("ali", "guitar");
+// console.log(Page.play("strums"));
+
+class Peeps {
+  static count: number = 0;
+
+  static getCount(): number {
+    return Peeps.count;
+  }
+
+  public id: number;
+
+  constructor(public name: string) {
     this.name = name;
-    this.instrument = instrument;
-  }
-
-  play(action: string): string {
-    return `${this.name} ${action}`;
+    this.id = ++Peeps.count;
   }
 }
 
-let Page = new Guitarist("ali", "guitar");
-console.log(Page.play("strums"));
+const beyda = new Peeps("beyda");
+const feyza = new Peeps("feyza");
+
+console.log(Peeps.count);
+console.log(feyza.id);
