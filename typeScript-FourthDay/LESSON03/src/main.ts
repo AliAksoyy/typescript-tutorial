@@ -43,7 +43,7 @@ let a: Array<object> = [{ a: 3 }, { v: false }];
 type Guitarist = {
   name: string;
   active: boolean;
-  albums: (string | number)[];
+  albums?: (string | number)[];
   cb: (type: string) => void;
 };
 
@@ -54,3 +54,26 @@ let evh: Guitarist = {
   cb: (type) => console.log(`${type}`),
 };
 evh.cb("a");
+
+// evh.years = 40; //??Property 'years' does not exist on type 'Guitarist'.
+
+
+
+
+
+interface Guitarister {
+  name: string;
+  active?: boolean;
+  albums: (string | number)[];
+}
+let jp: Guitarister = {
+  name: "ali",
+  albums: ["I", "II", "III"],
+};
+
+const greetGuitarist = (guitarist:Guitarister) => {
+  return guitarist.name
+};
+
+
+console.log(greetGuitarist(jp));

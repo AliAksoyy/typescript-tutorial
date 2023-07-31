@@ -31,3 +31,11 @@ let evh = {
     cb: (type) => console.log(`${type}`),
 };
 evh.cb("a");
+let jp = {
+    name: "ali",
+    albums: ["I", "II", "III"],
+};
+const greetGuitarist = (guitarist) => {
+    return guitarist.name;
+};
+console.log(greetGuitarist(jp));
