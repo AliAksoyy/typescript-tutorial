@@ -79,23 +79,51 @@
 // let Page = new Guitarist("ali", "guitar");
 // console.log(Page.play("strums"));
 
-class Peeps {
-  static count: number = 0;
+// class Peeps {
+//   static count: number = 0;
 
-  static getCount(): number {
-    return Peeps.count;
+//   static getCount(): number {
+//     return Peeps.count;
+//   }
+
+//   public id: number;
+
+//   constructor(public name: string) {
+//     this.name = name;
+//     this.id = ++Peeps.count;
+//   }
+// }
+
+// const beyda = new Peeps("beyda");
+// const feyza = new Peeps("feyza");
+
+// console.log(Peeps.count);
+// console.log(feyza.id);
+
+class Bands {
+  private dataState: string[];
+
+  constructor() {
+    this.dataState = [];
   }
 
-  public id: number;
+  public get data(): string[] {
+    return this.dataState;
+  }
 
-  constructor(public name: string) {
-    this.name = name;
-    this.id = ++Peeps.count;
+  public set data(value: string[]) {
+    if (Array.isArray(value) && value.every((el) => typeof el === "string")) {
+      this.dataState = value;
+      return;
+    } else {
+      throw new Error("Param is not an array of strings");
+    }
   }
 }
 
-const beyda = new Peeps("beyda");
-const feyza = new Peeps("feyza");
+const myBands = new Bands();
+myBands.data = ["1", "2", "f"];
+console.log(myBands.data);
+myBands.data =[...myBands.data, "3","5"]
+console.log(myBands.data);
 
-console.log(Peeps.count);
-console.log(feyza.id);
