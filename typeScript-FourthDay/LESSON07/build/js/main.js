@@ -31,12 +31,12 @@ console.log(student.test);
 for (const key in student) {
     console.log(`${key}: ${student[key]}`);
 }
-const student = {
+const student1 = {
     name: "Dough",
     GPA: 3.5,
     classes: [100, 200],
 };
-for (const key in student) {
+for (const key in student1) {
     console.log(`${key}: ${student[key]}`);
 }
 Object.keys(student).map((key) => {

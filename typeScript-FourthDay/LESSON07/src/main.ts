@@ -64,13 +64,13 @@ interface Student1 {
   classes?: number[];
 }
 
-const student: Student1 = {
+const student1: Student1 = {
   name: "Dough",
   GPA: 3.5,
   classes: [100, 200],
 };
 
-for (const key in student) {
+for (const key in student1) {
   console.log(`${key}: ${student[key as keyof Student1]}`);
 }
 
@@ -84,9 +84,9 @@ const logStudentKey = (student: Student1, key: keyof Student1): void => {
 
 logStudentKey(student, "GPA");
 
-interface Incomes {
-  [key: string]: number;
-}
+// interface Incomes {
+//   [key: string]: number;
+// }
 
 type Streams = "salary" | "bonus" | "sidehustle";
 
