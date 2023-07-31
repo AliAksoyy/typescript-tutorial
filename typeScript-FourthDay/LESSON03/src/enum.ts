@@ -30,3 +30,5 @@ let myName: "Dave";
 let userName: "Dave" | "John" | "Amy";
 
 userName: "Amy";
+
+
