@@ -4,8 +4,9 @@ const todaysTransactions = {
     Pizza: -10,
     Books: -5,
     Job: 50,
-    Ali: 43
+    Ali: 43,
 };
+console.log(todaysTransactions);
 console.log(todaysTransactions.Pizza);
 console.log(todaysTransactions["Books"]);
 let prop = "Pizza";
