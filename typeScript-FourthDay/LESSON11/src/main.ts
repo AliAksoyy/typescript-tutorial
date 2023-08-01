@@ -27,6 +27,7 @@ const initApp = (): void => {
 
     fullList.addItem(newItem);
     template.render(fullList);
+    
   });
 
   const clearItems = document.getElementById(
