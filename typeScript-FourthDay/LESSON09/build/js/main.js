@@ -1,73 +1,45 @@
 "use strict";
-const add = (a, b) => {
-    return a + b;
+// Utility Types
+const updateAssignment = (assign, propsToUpdate) => {
+    return Object.assign(Object.assign({}, assign), propsToUpdate);
 };
-console.log(add(1, 2));
-const logMsg = (message) => {
-    console.log(message);
+const assign1 = {
+    studentId: "compsci123",
+    title: "Final Project",
+    grade: 0,
 };
-logMsg([1, 2]);
-logMsg({ a: 3 });
-logMsg(add(2, 3));
-let subtract = function (c, d) {
-    return c - d;
+console.log(updateAssignment(assign1, { grade: 75 }));
+const assignGraded = updateAssignment(assign1, { grade: 95 });
+console.log(assignGraded);
+// Required and Readonly Types
+const recordAssignment = (assign) => {
+    //send to database, etc..
+    return assign;
 };
-console.log(subtract(1, 2));
-let mutiply = function (c, d) {
-    return c * d;
+const assignVerified = Object.assign(Object.assign({}, assignGraded), { verified: true });
+// assignVerified.grade = 77 //?? Cannot assign to 'grade' because it is a read-only property.
+console.log(assignVerified);
+recordAssignment(assignGraded);
+// Record Type
+const hexColorMap = {
+    red: "FF0000",
+    green: "00FF00",
+    blue: "0000FF",
 };
-logMsg(mutiply(4, 2));
-let carpma = (a, b) => {
-    return a * b;
+const finalGrades = {
+    Sara: "B",
+    Kelly: "U",
 };
-console.log(carpma(4, 2));
-// optional parametres
-const addAll = (a, b, c) => {
-    if (c) {
-        return a + b + c;
-    }
-    return a + b;
+const gradeData = {
+    Sara: { assign1: 1, assign2: 3 },
+    Kelly: { assign1: 1, assign2: 5 },
 };
-// default param value
-const addAll1 = (a, b, c = 2) => {
-    return a + b + c;
+console.log(gradeData);
+const score = {
+    studentId: "studentId",
+    grade: 78,
 };
-logMsg(addAll1(1, 2, 3));
-logMsg(addAll1(1, 2));
-// Rest Parameters
-const total = (a, ...nums) => {
-    console.log(nums);
-    return (a +
-        nums.reduce((prev, cur) => {
-            console.log(prev);
-            console.log(cur);
-            return prev + cur;
-        }));
+const preview = {
+    studentId: "k123",
+    title: "Final Project",
 };
-logMsg(total(5, 2, 3, 4, 6, 7));
-const createError = (errMsg) => {
-    throw new Error(errMsg);
-};
-logMsg(createError("aa"));
-const infinite = () => {
-    let i = 1;
-    while (true) {
-        i++;
-        if (i > 100)
-            break;
-    }
-};
-infinite();
-// custom  type guard
-const isNumber = (value) => {
-    return typeof value === "number" ? true : false;
-};
-// use of the never type
-const numberOrString = (value) => {
-    if (typeof value === "string")
-        return "string";
-    if (isNumber(value))
-        return "number";
-    return createError("This should never happened");
-};
-console.log(numberOrString("a"));
