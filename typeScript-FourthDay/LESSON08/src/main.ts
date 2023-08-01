@@ -2,21 +2,21 @@ const stringEcho = (arg: string): string => {
   return arg;
 };
 
-// console.log(stringEcho("arg"));
+console.log(stringEcho("arg"));
 
 const stringEcho1 = <T>(arg: T): T => {
   return arg;
 };
 
-// console.log(stringEcho1("arg"));
-// console.log(stringEcho1(4));
+console.log(stringEcho1("arg"));
+console.log(stringEcho1(4));
 
 const isObj = <T>(arg: T): boolean => {
   return typeof arg === "object" && !Array.isArray(arg) && arg !== null;
 };
-// console.log(isObj(true));
-// console.log(isObj({ a: 4 }));
-// console.log(isObj([{ a: 4 }]));
+console.log(isObj(true));
+console.log(isObj({ a: 4 }));
+console.log(isObj([{ a: 4 }]));
 
 interface BoolCheck<T> {
   value: T;
@@ -46,19 +46,19 @@ const isTrue1 = <T>(arg: T): BoolCheck<T> => {
   return { value: arg, is: !!arg };
 };
 
-// console.log(isTrue(false));
-// console.log(isTrue(0));
-// console.log(isTrue(1));
-// console.log(isTrue("ali"));
-// console.log(isTrue(""));
-// console.log(isTrue(null));
-// console.log("a", isTrue({}));
-// console.log(isTrue(NaN));
-// console.log(isTrue(-0));
-// console.log("b", isTrue([]));
-// console.log(isTrue([1, 2, 3]));
-// console.log(isTrue({ a: 4 }));
-// console.log(isTrue([{ a: 4 }]));
+console.log(isTrue(false));
+console.log(isTrue(0));
+console.log(isTrue(1));
+console.log(isTrue("ali"));
+console.log(isTrue(""));
+console.log(isTrue(null));
+console.log("a", isTrue({}));
+console.log(isTrue(NaN));
+console.log(isTrue(-0));
+console.log("b", isTrue([]));
+console.log(isTrue([1, 2, 3]));
+console.log(isTrue({ a: 4 }));
+console.log(isTrue([{ a: 4 }]));
 
 interface HasID {
   id: number;
@@ -69,7 +69,7 @@ const processUser = <T extends HasID>(user: T): T => {
   return user;
 };
 
-// console.log(processUser({ id: 3, name: "ali" }));
+console.log(processUser({ id: 3, name: "ali" }));
 
 const getUserProperty = <T extends HasID, K extends keyof T>(
   users: T[],
@@ -127,8 +127,8 @@ const usersArray = [
   },
 ];
 
-// console.log(getUserProperty(usersArray, "email"));
-// console.log(getUserProperty(usersArray, "address"));
+console.log(getUserProperty(usersArray, "email"));
+console.log(getUserProperty(usersArray, "address"));
 
 class StateObject<T> {
   private data: T;
