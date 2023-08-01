@@ -127,5 +127,34 @@ const usersArray = [
   },
 ];
 
-console.log(getUserProperty(usersArray, "email"));
-console.log(getUserProperty(usersArray, "address"));
+// console.log(getUserProperty(usersArray, "email"));
+// console.log(getUserProperty(usersArray, "address"));
+
+class StateObject<T> {
+  private data: T;
+
+  constructor(value: T) {
+    this.data = value;
+  }
+
+  get state(): T {
+    return this.data;
+  }
+
+  set state(value: T) {
+    this.data = value;
+  }
+}
+
+const store = new StateObject("ali");
+console.log(store.state);
+store.state = "false";
+console.log(store.state);
+
+const myState = new StateObject<(string | number | boolean)[]>([
+  1,
+  "2,",
+  false,
+]);
+
+console.log(myState.state);

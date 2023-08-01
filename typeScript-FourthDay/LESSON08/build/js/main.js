@@ -86,5 +86,26 @@ const usersArray = [
         },
     },
 ];
-console.log(getUserProperty(usersArray, "email"));
-console.log(getUserProperty(usersArray, "address"));
+// console.log(getUserProperty(usersArray, "email"));
+// console.log(getUserProperty(usersArray, "address"));
+class StateObject {
+    constructor(value) {
+        this.data = value;
+    }
+    get state() {
+        return this.data;
+    }
+    set state(value) {
+        this.data = value;
+    }
+}
+const store = new StateObject("ali");
+console.log(store.state);
+store.state = "false";
+console.log(store.state);
+const myState = new StateObject([
+    1,
+    "2,",
+    false,
+]);
+console.log(myState.state);
