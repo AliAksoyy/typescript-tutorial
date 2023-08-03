@@ -4,6 +4,7 @@ import {
   ChangeEvent,
   ReactElement,
   useCallback,
+  useContext,
 } from "react";
 
 type StateType = {
@@ -11,6 +12,7 @@ type StateType = {
   text: string;
 };
 
+// eslint-disable-next-line react-refresh/only-export-components
 export const initState: StateType = { count: 0, text: "" };
 
 const enum REDUCER_ACTİON_TYPE {
@@ -62,6 +64,7 @@ const initContextState: UseCounterContextType = {
   state: initState,
   increment: () => {},
   decrement: () => {},
+  // eslint-disable-next-line @typescript-eslint/no-unused-vars
   handleTextInput: (e: ChangeEvent<HTMLInputElement>) => {},
 };
 
@@ -86,5 +89,30 @@ export const CounterProvider = ({
 type UseCounterHookType = {
   count: number;
   increment: () => void;
-  decrement:()=>void
+  decrement: () => void;
+};
+
+// eslint-disable-next-line react-refresh/only-export-components
+export const useCounter = (): UseCounterHookType => {
+  const {
+    state: { count },
+    increment,
+    decrement,
+  } = useContext(CounterContext);
+  return { count, increment, decrement };
+};
+
+type UseCounterTextHookType = {
+  text: string;
+  handleTextInput: (e: ChangeEvent<HTMLInputElement>) => void;
+};
+
+// eslint-disable-next-line react-refresh/only-export-components
+export const useCounterText = (): UseCounterTextHookType => {
+  const {
+    state: { text },
+    handleTextInput,
+  } = useContext(CounterContext);
+
+  return { text, handleTextInput };
 };
