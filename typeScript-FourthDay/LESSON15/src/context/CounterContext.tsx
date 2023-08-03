@@ -64,8 +64,10 @@ const initContextState: UseCounterContextType = {
   state: initState,
   increment: () => {},
   decrement: () => {},
-  // eslint-disable-next-line @typescript-eslint/no-unused-vars
-  handleTextInput: (e: ChangeEvent<HTMLInputElement>) => {},
+
+  handleTextInput: (e: ChangeEvent<HTMLInputElement>) => {
+    console.log(e);
+  },
 };
 
 export const CounterContext =
