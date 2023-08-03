@@ -1,4 +1,4 @@
-import { ReactElement, createContext, useState, useEffect } from "react";
+import { createContext, ReactElement, useState, useEffect } from "react";
 
 export type ProductType = {
   sku: string;
@@ -7,24 +7,23 @@ export type ProductType = {
 };
 
 const initState: ProductType[] = [];
-
 // const initState: ProductType[] = [
-//   {
-//     sku: "item0001",
-//     name: "Widget",
-//     price: 9.99,
-//   },
-//   {
-//     sku: "item0002",
-//     name: "Premium Widget",
-//     price: 19.99,
-//   },
-//   {
-//     sku: "item0003",
-//     name: "Deluxe Widget",
-//     price: 29.99,
-//   },
-// ];
+//     {
+//         "sku": "item0001",
+//         "name": "Widget",
+//         "price": 9.99
+//     },
+//     {
+//         "sku": "item0002",
+//         "name": "Premium Widget",
+//         "price": 19.99
+//     },
+//     {
+//         "sku": "item0003",
+//         "name": "Deluxe Widget",
+//         "price": 29.99
+//     }
+// ]
 
 export type UseProductsContextType = { products: ProductType[] };
 
@@ -39,16 +38,16 @@ export const ProductsProvider = ({ children }: ChildrenType): ReactElement => {
 
   useEffect(() => {
     const fetchProducts = async (): Promise<ProductType[]> => {
-//************** npx json-server -w data/products.json -p 3500
       const data = await fetch("http://localhost:3500/products")
-        .then((res) => res.json())
+        .then((res) => {
+          return res.json();
+        })
         .catch((err) => {
-          if (err instanceof Error) {
-            console.log(err.message);
-          }
+          if (err instanceof Error) console.log(err.message);
         });
       return data;
     };
+
     fetchProducts().then((products) => setProducts(products));
   }, []);
 
