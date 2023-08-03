@@ -1,35 +1,63 @@
-import { useState } from 'react'
-import reactLogo from './assets/react.svg'
-import viteLogo from '/vite.svg'
-import './App.css'
+import {
+  useState,
+  useEffect,
+  useCallback,
+  KeyboardEvent,
+  MouseEvent,
+  useMemo,
+  useRef
+} from "react";
 
-function App() {
-  const [count, setCount] = useState(0)
-
-  return (
-    <>
-      <div>
-        <a href="https://vitejs.dev" target="_blank">
-          <img src={viteLogo} className="logo" alt="Vite logo" />
-        </a>
-        <a href="https://react.dev" target="_blank">
-          <img src={reactLogo} className="logo react" alt="React logo" />
-        </a>
-      </div>
-      <h1>Vite + React</h1>
-      <div className="card">
-        <button onClick={() => setCount((count) => count + 1)}>
-          count is {count}
-        </button>
-        <p>
-          Edit <code>src/App.tsx</code> and save to test HMR
-        </p>
-      </div>
-      <p className="read-the-docs">
-        Click on the Vite and React logos to learn more
-      </p>
-    </>
-  )
+interface User {
+  id: number;
+  username: string;
 }
 
-export default App
+type fibFunc = (n: number) => number;
+
+const fib: fibFunc = (n) => {
+  if (n < 2) return n;
+  return fib(n - 1) + fib(n - 2);
+};
+
+const myNum: number = 37;
+
+const App = () => {
+  const [count, setCount] = useState<number>(0);
+  const [users, setUsers] = useState<User[] | null>(null);
+
+  const inputRef = useRef<HTMLInputElement>(null)
+
+  if(!inputRef.current)
+
+  useEffect(() => {
+    console.log("mouting");
+    console.log(users);
+    return () => console.log("unmouting");
+  }, [users]);
+
+  const addTwo = useCallback(
+    (
+      event: MouseEvent<HTMLButtonElement> | KeyboardEvent<HTMLButtonElement>
+    ): void => {
+      console.log(event);
+      setCount((prev) => prev + 1);
+    },
+    []
+  );
+
+
+  const result= useMemo<number>(()=>fib(myNum),[myNum])
+
+
+  return (
+    <div className="App">
+      <h1>{count}</h1>
+      <button onClick={addTwo}>Add</button>
+      <h2>{result}</h2>
+      <input ref={inputRef} type="text" />
+    </div>
+  );
+};
+
+export default App;
