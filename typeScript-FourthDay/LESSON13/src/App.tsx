@@ -5,7 +5,7 @@ import {
   KeyboardEvent,
   MouseEvent,
   useMemo,
-  useRef
+  useRef,
 } from "react";
 
 interface User {
@@ -24,11 +24,9 @@ const myNum: number = 37;
 
 const App = () => {
   const [count, setCount] = useState<number>(0);
-  const [users, setUsers] = useState<User[] | null>(null);
+  const [users] = useState<User[] | null>(null);
 
-  const inputRef = useRef<HTMLInputElement>(null)
-
-  if(!inputRef.current)
+  const inputRef = useRef<HTMLInputElement>(null);
 
   useEffect(() => {
     console.log("mouting");
@@ -46,9 +44,7 @@ const App = () => {
     []
   );
 
-
-  const result= useMemo<number>(()=>fib(myNum),[myNum])
-
+  const result = useMemo<number>(() => fib(myNum), []);
 
   return (
     <div className="App">
