@@ -1,1 +1,2 @@
-console.log("ali");
+console.log("object");
+console.log("a2");
