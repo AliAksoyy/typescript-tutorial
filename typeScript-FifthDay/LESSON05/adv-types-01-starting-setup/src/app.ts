@@ -1,25 +1,26 @@
 type Bird = {
   type: "bird";
-  flySpeed: number;
+  flyS: number;
 };
 
 type Horse = {
   type: "horse";
-  runSpeed: number;
+  runS: number;
 };
 
 type Animal = Bird | Horse;
 
-function moveAnimal(item: Animal) {
+function move(animal: Animal) {
   let speed;
-  switch (item.type) {
+  switch (animal.type) {
     case "bird":
-      speed = item.flySpeed;
+      speed = animal.flyS;
       break;
     case "horse":
-      speed = item.runSpeed;
+      speed = animal.runS;
+      break;
   }
   console.log(speed);
 }
 
-moveAnimal({type:"bird", flySpeed:3})
+move({ type: "bird", flyS: 3 });
