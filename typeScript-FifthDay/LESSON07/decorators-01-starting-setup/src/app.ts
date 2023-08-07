@@ -1,52 +1,48 @@
-// function Logger(logString: string) {
-//   return function (constructor: Function) {
-//     console.log(logString);
-//     console.log(constructor);
-//   };
-// }
-
-// function WithTemplate(template: string, hookId: string) {
-//   return function (constructor: any) {
-//     let hookData = document.getElementById(hookId);
-//     const p = new constructor()
-//     if (hookData) {
-//       (hookData as HTMLDivElement).innerHTML = template;
-//         hookData.querySelector("h1")!.textContent = p.name
-
-//     }
-//   };
-// }
-// @WithTemplate("<h1>My person Object</h1>", "app")
-// @Logger("LOGGING - PERSON")
-// class Person {
-//   name: string = "Ali";
-//   constructor() {
-//     console.log("Creating person object");
-//   }
-// }
-
-function Log(target: any, propertyName: string | Symbol) {
-    console.log("Property Decaroter")
-    console.log(target, propertyName);
+function Log(target: any, propertyName: string) {
+  console.log("... Logged");
+  console.log(target);
+  console.log(propertyName);
 }
 
-class Product {
+function Log2(target: any, name: string, descriptor: PropertyDescriptor) {
+  console.log("Accessor decarotor");
+  console.log(target);
+  console.log(name);
+  console.log(descriptor);
+}
+
+function Log3(target: any, name: string, descriptor: PropertyDescriptor) {
+  console.log("Method decarotor");
+  console.log(target);
+  console.log(name);
+  console.log(descriptor);
+}
+
+function Log4(target: any, name: string, position: number) {
+  console.log("Parameter decarotor");
+  console.log(target);
+  console.log(name);
+  console.log(position);
+}
+
+class Person {
   @Log
   title: string;
-  price: number;
+  private _price: number;
 
-  set setPrice(val: number) {
+  @Log2
+  set price(val: number) {
     if (val) {
-      this.price = val;
-    } else {
-      throw new Error("Product");
+      this._price = val;
     }
   }
+
   constructor(title: string, price: number) {
     this.title = title;
-    this.price = price;
+    this._price = price;
   }
-  getPrice(tax: number) {
-    return this.price * (1 + tax);
+  @Log3
+  getPrice(@Log4 tax: number) {
+    this._price * (1 + tax);
   }
 }
