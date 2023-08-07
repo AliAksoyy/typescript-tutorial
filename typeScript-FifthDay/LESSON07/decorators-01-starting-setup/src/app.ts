@@ -5,6 +5,15 @@ function Logger(logString: string) {
   };
 }
 
+function WithA(template: string, hookId: string) {
+  return function (_constructor: Function) {
+    let hookData = document.getElementById(hookId);
+    if (hookData) {
+      (hookData as HTMLDivElement).innerHTML = template;
+    }
+  };
+}
+@WithA("ssss","app")
 @Logger("LOGGING - PERSON")
 class Person {
   name: string = "Ali";
