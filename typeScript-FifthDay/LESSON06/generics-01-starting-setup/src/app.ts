@@ -1,6 +1,5 @@
-function mege(objA: Object, objB: Object): Object {
-  return Object.assign(objA, objB);
+function ali<T extends object,U extends keyof T>(a:T, b:U) {
+  return a[b];
 }
 
-let a = mege({ name: "s" }, { age: 30 }) as { name: string; age: number };
-
+console.log(ali({name:"d"}, "name"));
