@@ -1,5 +1,23 @@
-function ali<T extends object,U extends keyof T>(a:T, b:U) {
-  return a[b];
+class DataStorage<T> {
+  
+    data: T[] = [];
+
+  addItem(item: T) {
+    this.data.push(item);
+  }
+
+  removeItem(item: T) {
+    this.data.splice(this.data.indexOf(item), 1);
+  }
+
+  getItem() {
+    return [...this.data];
+  }
 }
 
-console.log(ali({name:"d"}, "name"));
+const textStorage = new DataStorage<string>();
+textStorage.addItem("ali");
+textStorage.addItem("beyda");
+// textStorage.removeItem("ali");
+console.log(textStorage)
+console.log(textStorage.getItem());
