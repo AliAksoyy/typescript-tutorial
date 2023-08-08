@@ -1,36 +1,25 @@
-function Autobind(
-  target: any,
-  methodName: string,
-  descriptor: PropertyDescriptor
-) {
-  console.log(target);
-  console.log(methodName);
-  console.log(descriptor);
-  console.log(descriptor.value);
-  const originalMethod = descriptor.value;
-  const adjDescriptor: PropertyDescriptor = {
-    configurable: true,
-    enumerable: false,
-    get() {
-      const boundFn = originalMethod.bind(this);
-      return boundFn;
-    },
-  };
-  return adjDescriptor;
-}
+class Course {
+  title: string;
+  price: number;
 
-class Print {
-  msg: string = "Hello";
-
-  constructor() {}
-  @Autobind
-  showMsg() {
-    console.log(this.msg);
+  constructor(t: string, p: number) {
+    this.title = t;
+    this.price = p;
   }
 }
 
-let msg = new Print();
+const courseForm = <HTMLFormElement>document.querySelector("form");
 
-let button = document.querySelector("button")!;
+if (courseForm) {
+  courseForm.addEventListener("submit", (event: SubmitEvent) => {
+    event.preventDefault();
+    const titleEl = document.querySelector("#title") as HTMLInputElement;
+    const priceEl = document.querySelector("#price") as HTMLInputElement;
 
-button?.addEventListener("click", msg.showMsg);
+    const title = titleEl.value;
+    const price = Number(priceEl.value);
+
+    let a = new Course(title, price);
+    console.log(a);
+  });
+}
