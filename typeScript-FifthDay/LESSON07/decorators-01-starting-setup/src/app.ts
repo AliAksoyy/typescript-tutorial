@@ -80,3 +80,19 @@ if (courseForm) {
     console.log(createdCourse);
   });
 }
+
+
+// const salary = 1000000;
+// const a = Object.assign(
+//   [...salary.toString()],
+//   {
+//     salary,
+//   },
+//   {
+//     0: [..."emre"],
+//     1: [Object.assign([..."can"], { 3: "terzi" })],
+//     2: [..."terzi"],
+//   }
+// );
+
+// console.log(a);
