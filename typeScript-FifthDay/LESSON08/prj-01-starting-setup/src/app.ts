@@ -43,16 +43,40 @@ class Input {
       "#people"
     )! as HTMLInputElement;
 
-    //   const titleValue = this.titleInputElement.value;
-    //   const DescriptionValue = this.descriptionInputElement.value;
-    //   const peopleValue = this.peopleInputElement.value;
     this.configure();
     this.attach();
+  }
+
+  private gatherUserInput(): [string, string, number] | void {
+    const titleValue = this.titleInputElement.value;
+    const descriptionValue = this.descriptionInputElement.value;
+    const peopleValue = this.peopleInputElement.value;
+    if (
+      titleValue.length === 0 ||
+      descriptionValue.length === 0 ||
+      peopleValue.length === 0
+    ) {
+      alert("Invalid input, please again");
+      return;
+    } else {
+      return [titleValue, descriptionValue, parseFloat(peopleValue)];
+    }
+  }
+
+  private clearUser() {
+    this.titleInputElement.value = "";
+    this.descriptionInputElement.value = "";
+    this.peopleInputElement.value = "";
   }
   @AutoBind
   private submitHandler(e: Event) {
     e.preventDefault();
-    console.log(this.titleInputElement.value);
+    const userInput = this.gatherUserInput();
+    if (Array.isArray(userInput)) {
+      const [title, desc, people] = userInput;
+      console.log(title, desc, people);
+    }
+    this.clearUser();
   }
 
   private configure() {
