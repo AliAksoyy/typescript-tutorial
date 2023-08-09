@@ -61,6 +61,35 @@ function AutoBind(
   return adjDescriptor;
 }
 
+class ProjectList {
+  templateEl: HTMLTemplateElement;
+  hostEl: HTMLDivElement;
+  el: HTMLElement;
+
+  constructor(private type: "active" | "finished") {
+    this.templateEl = document.querySelector(
+      "#project-list"
+    )! as HTMLTemplateElement;
+    this.hostEl = document.querySelector("#app")! as HTMLDivElement;
+    const importNode = document.importNode(this.templateEl.content, true);
+    this.el = importNode.firstElementChild as HTMLElement;
+    this.el.id = `${this.type}-projects`;
+    this.attach();
+    this.renderContent();
+  }
+
+  private renderContent() {
+    const listId = `${this.type}-projects-list`;
+    this.el.querySelector("ul")!.id = listId;
+    this.el.querySelector("h2")!.textContent =
+      this.type.toUpperCase() + " PROJECTS";
+  }
+
+  private attach() {
+    this.hostEl.insertAdjacentElement("beforeend", this.el);
+  }
+}
+
 class Input {
   templateEl: HTMLTemplateElement;
   hostEl: HTMLDivElement;
@@ -151,4 +180,6 @@ class Input {
   }
 }
 
-let a = new Input();
+let prjInput = new Input();
+let active = new ProjectList("active");
+let finishedProjectsList = new ProjectList("finished");
