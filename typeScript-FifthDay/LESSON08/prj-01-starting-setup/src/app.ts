@@ -25,7 +25,7 @@ class ProjectState {
     };
     this.projects.push(newProject);
     for (const listenerFn of this.listeners) {
-      listenerFn(this.listeners.slice());
+      listenerFn(this.projects.slice());
     }
   }
 }
@@ -101,19 +101,39 @@ class ProjectList {
   templateEl: HTMLTemplateElement;
   hostEl: HTMLDivElement;
   el: HTMLElement;
+  assignedProjects: any[];
 
   constructor(private type: "active" | "finished") {
     this.templateEl = document.querySelector(
       "#project-list"
     )! as HTMLTemplateElement;
     this.hostEl = document.querySelector("#app")! as HTMLDivElement;
+    this.assignedProjects = [];
     const importNode = document.importNode(this.templateEl.content, true);
     this.el = importNode.firstElementChild as HTMLElement;
     this.el.id = `${this.type}-projects`;
+
+    projectState.addListener((projects: any[]) => {
+      this.assignedProjects = projects;
+      this.renderProjects();
+    });
     this.attach();
     this.renderContent();
   }
 
+  private renderProjects() {
+    const listEl = document.querySelector(
+      `#${this.type}-projects-list`
+    )! as HTMLUListElement;
+    console.log("assignedProjects",this.assignedProjects);
+
+    for (const prjItem of this.assignedProjects) {
+      console.log("prjItem", prjItem);
+      const listItem = document.createElement("li");
+      listItem.textContent = prjItem.title;
+      listEl.appendChild(listItem);
+    }
+  }
   private renderContent() {
     const listId = `${this.type}-projects-list`;
     this.el.querySelector("ul")!.id = listId;
