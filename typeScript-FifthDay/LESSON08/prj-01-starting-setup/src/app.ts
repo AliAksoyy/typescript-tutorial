@@ -1,3 +1,20 @@
+function AutoBind(
+  _target: any,
+  _propertyName: string,
+  descriptor: PropertyDescriptor
+) {
+  const originalMethod = descriptor.value;
+  const adjDescriptor: PropertyDescriptor = {
+    configurable: true,
+    enumerable: false,
+    get() {
+      const boundFn = originalMethod.bind(this);
+      return boundFn;
+    },
+  };
+  return adjDescriptor;
+}
+
 class Input {
   templateEl: HTMLTemplateElement;
   hostEl: HTMLDivElement;
@@ -32,7 +49,7 @@ class Input {
     this.configure();
     this.attach();
   }
-
+  @AutoBind
   private submitHandler(e: Event) {
     e.preventDefault();
     console.log(this.titleInputElement.value);
