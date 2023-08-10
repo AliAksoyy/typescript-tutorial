@@ -113,51 +113,79 @@ function AutoBind(
   return adjDescriptor;
 }
 
-class ProjectList {
+abstract class Component<T extends HTMLElement, U extends HTMLElement> {
   templateEl: HTMLTemplateElement;
-  hostEl: HTMLDivElement;
-  el: HTMLElement;
+  hostEl: T;
+  element: U;
+  consturctor(
+    templateId: string,
+    hostElementId: string,
+    insertAtStart: boolean,
+    newElementId?: string
+  ) {
+    this.templateEl = document.querySelector(
+      `#${templateId}`
+    )! as HTMLTemplateElement;
+    this.hostEl = document.querySelector(`#${hostElementId}`)! as T;
+    const importNode = document.importNode(this.templateEl.content, true);
+    this.element = importNode.firstElementChild as U;
+    if (newElementId) {
+      this.element.id = newElementId;
+    }
+    this.attach(insertAtStart);
+  }
+  private attach(insertAtBeginning: boolean) {
+    this.hostEl.insertAdjacentElement(
+      insertAtBeginning ? "afterbegin" : "beforeend",
+      this.element
+    );
+  }
+
+  abstract configure(): void;
+  abstract renderContent(): void;
+}
+
+class ProjectList extends Component<HTMLDivElement, HTMLElement> {
   assignedProjects: Project[];
 
   constructor(private type: "active" | "finished") {
-    this.templateEl = document.querySelector(
-      "#project-list"
-    )! as HTMLTemplateElement;
-    this.hostEl = document.querySelector("#app")! as HTMLDivElement;
+    super("project-list", "app", false,`${type}-projects`);
     this.assignedProjects = [];
-    const importNode = document.importNode(this.templateEl.content, true);
-    this.el = importNode.firstElementChild as HTMLElement;
-    this.el.id = `${this.type}-projects`;
 
     projectState.addListener((projects: Project[]) => {
-      this.assignedProjects = projects;
+      const relevantProjects = projects.filter((project) => {
+        if (this.type === "active") {
+          return project.status === ProjectStatus.Active;
+        }
+        return project.status === ProjectStatus.Finished;
+      });
+      this.assignedProjects = relevantProjects;
       this.renderProjects();
     });
     this.attach();
     this.renderContent();
   }
 
-  private renderProjects() {
+  renderProjects() {
     const listEl = document.querySelector(
       `#${this.type}-projects-list`
     )! as HTMLUListElement;
 
+    listEl.innerHTML = "";
     for (const prjItem of this.assignedProjects) {
       const listItem = document.createElement("li");
       listItem.textContent = prjItem.title;
       listEl.appendChild(listItem);
     }
   }
-  private renderContent() {
+   renderContent() {
     const listId = `${this.type}-projects-list`;
-    this.el.querySelector("ul")!.id = listId;
-    this.el.querySelector("h2")!.textContent =
+    this.element.querySelector("ul")!.id = listId;
+    this.element.querySelector("h2")!.textContent =
       this.type.toUpperCase() + " PROJECTS";
   }
 
-  private attach() {
-    this.hostEl.insertAdjacentElement("beforeend", this.el);
-  }
+ 
 }
 
 class Input {
