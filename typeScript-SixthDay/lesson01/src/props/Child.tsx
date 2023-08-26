@@ -13,7 +13,6 @@ export const ChildAsFC: React.FunctionComponent<ChildProps> = ({
     <div>
       {color}
       {children}
-      <input type="text" />
       <button onClick={onClick}>Click me</button>
     </div>
   );
