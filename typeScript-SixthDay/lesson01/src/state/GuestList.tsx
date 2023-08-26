@@ -8,7 +8,7 @@ const GuestList: React.FC = () => {
     setName("");
     setGuest([...guest, name]);
   };
-  console.log(guest);
+
 
   return (
     <div>
