@@ -1,5 +1,5 @@
 import { createRoot } from "react-dom/client";
-import Parent from "./props/Parent";
+import GuestList from "./state/GuestList";
 const container = document.getElementById("root")!;
 const root = createRoot(container);
 
@@ -7,7 +7,7 @@ const App = () => {
   return (
     <div>
       <h1>Hi there!</h1>
-      <Parent />
+      <GuestList />
     </div>
   );
 };
